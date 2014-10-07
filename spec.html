@@ -107,6 +107,23 @@ a.footnoteRef > sup {
 <li><a href="#soft-line-breaks"><span class="toc-section-number">6.10</span> Soft line breaks</a></li>
 <li><a href="#strings"><span class="toc-section-number">6.11</span> Strings</a></li>
 </ul></li>
+<li><a href="#extensions"><span class="toc-section-number">7</span> Extensions</a><ul>
+<li><a href="#attributes"><span class="toc-section-number">7.1</span> Attributes</a><ul>
+<li><a href="#horizontal-rules-1"><span class="toc-section-number">7.1.1</span> Horizontal rules</a></li>
+<li><a href="#atx-headers-1"><span class="toc-section-number">7.1.2</span> ATX headers</a></li>
+<li><a href="#setext-headers-1"><span class="toc-section-number">7.1.3</span> Setext headers</a></li>
+<li><a href="#fenced-code-blocks-1"><span class="toc-section-number">7.1.4</span> Fenced code blocks</a></li>
+<li><a href="#reference-links"><span class="toc-section-number">7.1.5</span> Reference Links</a></li>
+<li><a href="#paragraphs-1"><span class="toc-section-number">7.1.6</span> Paragraphs</a></li>
+<li><a href="#block-quotes-1"><span class="toc-section-number">7.1.7</span> Block quotes</a></li>
+<li><a href="#lists-1"><span class="toc-section-number">7.1.8</span> Lists</a></li>
+<li><a href="#code-span-1"><span class="toc-section-number">7.1.9</span> Code span</a></li>
+<li><a href="#emphasis-and-strong-emphasis-1"><span class="toc-section-number">7.1.10</span> Emphasis and strong emphasis</a></li>
+<li><a href="#inline-links"><span class="toc-section-number">7.1.11</span> Inline Links</a></li>
+<li><a href="#images-1"><span class="toc-section-number">7.1.12</span> Images</a></li>
+<li><a href="#spans"><span class="toc-section-number">7.1.13</span> Spans</a></li>
+</ul></li>
+</ul></li>
 <li><a href="#appendix-a-a-parsing-strategy">Appendix A: A parsing strategy</a><ul>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#the-document-tree">The document tree</a></li>
@@ -418,7 +435,7 @@ Example 22
 &lt;/ul&gt;</code></pre>
 </div>
 <h2 id="atx-headers"><span class="header-section-number">4.2</span> ATX headers</h2>
-<p>An <a href="#atx-header">ATX header</a> <a id="atx-header"></a> consists of a string of characters, parsed as inline content, between an opening sequence of 1–6 unescaped <code>#</code> characters and an optional closing sequence of any number of <code>#</code> characters. The opening sequence of <code>#</code> characters cannot be followed directly by a nonspace character. The closing <code>#</code> characters may be followed by spaces only. The opening <code>#</code> character may be indented 0-3 spaces. The raw contents of the header are stripped of leading and trailing spaces before being parsed as inline content. The header level is equal to the number of <code>#</code> characters in the opening sequence.</p>
+<p>An <a href="#atx-header">ATX header</a> <a id="atx-header"></a> consists of a string of characters, parsed as inline content, between an opening sequence of 1–6 unescaped <code>#</code> characters and an optional closing sequence of any number of <code>#</code> characters. The opening sequence of <code>#</code> characters cannot be followed directly by a non-space character. The closing <code>#</code> characters may be followed by spaces only. The opening <code>#</code> character may be indented 0-3 spaces. The raw contents of the header are stripped of leading and trailing spaces before being parsed as inline content. The header level is equal to the number of <code>#</code> characters in the opening sequence.</p>
 <p>Simple headers:</p>
 <div id="example-23" class="example" data-section="ATX headers">
 <div class="examplenum">
@@ -535,7 +552,7 @@ Example 34
 <pre class="markdown"><code>### foo ###     </code></pre>
 <pre class="html"><code>&lt;h3&gt;foo&lt;/h3&gt;</code></pre>
 </div>
-<p>A sequence of <code>#</code> characters with a nonspace character following it is not a closing sequence, but counts as part of the contents of the header:</p>
+<p>A sequence of <code>#</code> characters with a non-space character following it is not a closing sequence, but counts as part of the contents of the header:</p>
 <div id="example-35" class="example" data-section="ATX headers">
 <div class="examplenum">
 Example 35
@@ -591,7 +608,7 @@ Example 39
 &lt;h3&gt;&lt;/h3&gt;</code></pre>
 </div>
 <h2 id="setext-headers"><span class="header-section-number">4.3</span> Setext headers</h2>
-<p>A <a href="#setext-header">setext header</a> <a id="setext-header"></a> consists of a line of text, containing at least one nonspace character, with no more than 3 spaces indentation, followed by a <a href="#setext-header-underline">setext header underline</a>. A <a href="#setext-header-underline">setext header underline</a> <a id="setext-header-underline"></a> is a sequence of <code>=</code> characters or a sequence of <code>-</code> characters, with no more than 3 spaces indentation and any number of trailing spaces. The header is a level 1 header if <code>=</code> characters are used, and a level 2 header if <code>-</code> characters are used. The contents of the header are the result of parsing the first line as Markdown inline content.</p>
+<p>A <a href="#setext-header">setext header</a> <a id="setext-header"></a> consists of a line of text, containing at least one non-space character, with no more than 3 spaces indentation, followed by a <a href="#setext-header-underline">setext header underline</a>. A <a href="#setext-header-underline">setext header underline</a> <a id="setext-header-underline"></a> is a sequence of <code>=</code> characters or a sequence of <code>-</code> characters, with no more than 3 spaces indentation and any number of trailing spaces. The header is a level 1 header if <code>=</code> characters are used, and a level 2 header if <code>-</code> characters are used. The contents of the header are the result of parsing the first line as Markdown inline content.</p>
 <p>In general, a setext header need not be preceded or followed by a blank line. However, it cannot interrupt a paragraph, so when a setext header comes after a paragraph, a blank line is needed between them.</p>
 <p>Simple examples:</p>
 <div id="example-40" class="example" data-section="Setext headers">
@@ -2135,7 +2152,7 @@ with two lines.&lt;/p&gt;
 &lt;/blockquote&gt;&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
 </div>
-<p>The most important thing to notice is that the position of the text after the list marker determines how much indentation is needed in subsequent blocks in the list item. If the list marker takes up two spaces, and there are three spaces between the list marker and the next nonspace character, then blocks must be indented five spaces in order to fall under the list item.</p>
+<p>The most important thing to notice is that the position of the text after the list marker determines how much indentation is needed in subsequent blocks in the list item. If the list marker takes up two spaces, and there are three spaces between the list marker and the next non-space character, then blocks must be indented five spaces in order to fall under the list item.</p>
 <p>Here are some examples showing how far content must be indented to be put under the list item:</p>
 <div id="example-154" class="example" data-section="List items">
 <div class="examplenum">
@@ -2186,7 +2203,7 @@ Example 157
 &lt;p&gt;two&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 </div>
-<p>It is tempting to think of this in terms of columns: the continuation blocks must be indented at least to the column of the first nonspace character after the list marker. However, that is not quite right. The spaces after the list marker determine how much relative indentation is needed. Which column this indentation reaches will depend on how the list item is embedded in other constructions, as shown by this example:</p>
+<p>It is tempting to think of this in terms of columns: the continuation blocks must be indented at least to the column of the first non-space character after the list marker. However, that is not quite right. The spaces after the list marker determine how much relative indentation is needed. Which column this indentation reaches will depend on how the list item is embedded in other constructions, as shown by this example:</p>
 <div id="example-158" class="example" data-section="List items">
 <div class="examplenum">
 Example 158
@@ -2203,7 +2220,7 @@ Example 158
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;</code></pre>
 </div>
-<p>Here <code>two</code> occurs in the same column as the list marker <code>1.</code>, but is actually contained in the list item, because there is sufficent indentation after the last containing blockquote marker.</p>
+<p>Here <code>two</code> occurs in the same column as the list marker <code>1.</code>, but is actually contained in the list item, because there is sufficient indentation after the last containing blockquote marker.</p>
 <p>The converse is also possible. In the following example, the word <code>two</code> occurs far to the right of the initial text of the list item, <code>one</code>, but it is not considered part of the list item, because it is not indented far enough past the blockquote marker:</p>
 <div id="example-159" class="example" data-section="List items">
 <div class="examplenum">
@@ -2361,7 +2378,7 @@ Example 166
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
 </div>
-<p>Note that rules #1 and #2 only apply to two cases: (a) cases in which the lines to be included in a list item begin with a nonspace character, and (b) cases in which they begin with an indented code block. In a case like the following, where the first block begins with a three-space indent, the rules do not allow us to form a list item by indenting the whole thing and prepending a list marker:</p>
+<p>Note that rules #1 and #2 only apply to two cases: (a) cases in which the lines to be included in a list item begin with a non-space character, and (b) cases in which they begin with an indented code block. In a case like the following, where the first block begins with a three-space indent, the rules do not allow us to form a list item by indenting the whole thing and prepending a list marker:</p>
 <div id="example-167" class="example" data-section="List items">
 <div class="examplenum">
 Example 167
@@ -3970,7 +3987,7 @@ Example 307
 <pre class="markdown"><code>__foo _bar_ baz__</code></pre>
 <pre class="html"><code>&lt;p&gt;&lt;strong&gt;foo &lt;em&gt;bar&lt;/em&gt; baz&lt;/strong&gt;&lt;/p&gt;</code></pre>
 </div>
-<p>Note that you cannot nest emphasis directly inside emphasis using the same delimeter, or strong emphasis directly inside strong emphasis:</p>
+<p>Note that you cannot nest emphasis directly inside emphasis using the same delimiter, or strong emphasis directly inside strong emphasis:</p>
 <div id="example-308" class="example" data-section="Emphasis and strong emphasis">
 <div class="examplenum">
 Example 308
@@ -4133,7 +4150,7 @@ Example 326
 <p>A <a href="#link-destination">link destination</a> <a id="link-destination"></a> consists of either</p>
 <ul>
 <li><p>a sequence of zero or more characters between an opening <code>&lt;</code> and a closing <code>&gt;</code> that contains no line breaks or unescaped <code>&lt;</code> or <code>&gt;</code> characters, or</p></li>
-<li><p>a nonempty sequence of characters that does not include ASCII space or control characters, and includes parentheses only if (a) they are backslash-escaped or (b) they are part of a balanced pair of unescaped parentheses that is not itself inside a balanced pair of unescaped paretheses.</p></li>
+<li><p>a nonempty sequence of characters that does not include ASCII space or control characters, and includes parentheses only if (a) they are backslash-escaped or (b) they are part of a balanced pair of unescaped parentheses that is not itself inside a balanced pair of unescaped parentheses.</p></li>
 </ul>
 <p>A <a href="#link-title">link title</a> <a id="link-title"></a> consists of either</p>
 <ul>
@@ -5215,7 +5232,596 @@ Example 443
 <pre class="markdown"><code>Multiple     spaces</code></pre>
 <pre class="html"><code>&lt;p&gt;Multiple     spaces&lt;/p&gt;</code></pre>
 </div>
+<h1 id="extensions"><span class="header-section-number">7</span> Extensions</h1>
+<p>This section contains extensions to the Core Markdown syntax described above. They don’t need to be implemented to conform to this spec. However, if an implementation includes an extension with the same purpose as one of the extensions described here, this spec strongly recommends to implement the syntax described here.</p>
+<h2 id="attributes"><span class="header-section-number">7.1</span> Attributes</h2>
+<p>Certain elements may carry an attribute block. The following subsections list all elements that may contain attributes, see those for examples.</p>
+<ul>
+<li>For inlines, the attribute block must immediately follow the element without any characters between the end of the inline and the start of the attribute block.</li>
+<li>For horizontal rules, headers, fenced code blocks and reference links, there must be one or more space characters preceding the attribute block and any trailing whitespace is non-significant.</li>
+<li>For paragraphs, block quotes and tight lists, the attribute block must start on a line that immediately follows the corresponding block. (Attributes on list items are not supported.)</li>
+<li>For loose lists, the attribute block must start on a line that either immediately follows the list or is separated from it by only one blank line.</li>
+</ul>
+<p>For the last two points in the above list the following must hold: the line(s) on which the attribute block resides must not contain any other characters except for leading spaces (i.e. indentation), which may be significant in determining to which element the attribute block belongs, but the start of the attribute block must be indented by exactly the same amount as the corresonding block itself. Trailing whitespace is non-significant.</p>
+<p>An attribute block consists of a sequence of zero or more characters, between an unescaped opening LEFT CURLY BRACKET (<code>{</code>) and an unescaped closing RIGHT CURLY BRACKET (<code>}</code>), that includes curly brackets only if they are part of a balanced pair of unescaped double-quote or single-quote characters, and that does not contain a blank line. The characters between the opening and closing brackets form zero or more attributes which are separated by one or more whitespace characters (and may contain non-significant leading and trailing whitespace). The order of the attributes is not significant. An attribute consists of (a) a key-value pair, (b) an id-identifier or (c) a class-identifier.</p>
+<ul>
+<li><ol style="list-style-type: lower-alpha">
+<li>A key-value pair consists of a key, immediately followed by an EQUALS SIGN (<code>=</code>) which is immediately followed by the value. The key follows the syntax of <a href="#attribute-name">raw HTML attribute names</a>. The value consists of either</li>
+</ol>
+<ul>
+<li>a sequence of zero or more characters that does not include ASCII space or control characters, or</li>
+<li>a sequence of zero or more characters between straight double-quote characters (<code>&quot;</code>), including a <code>&quot;</code> character only if it is backslash-escaped, or</li>
+<li>a sequence of zero or more characters between straight single-quote characters (<code>'</code>), including a <code>'</code> character only if it is backslash-escaped.</li>
+</ul></li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>An id-identifier consists of a NUMBER SIGN — also known as a hash — (<code>#</code>) immediately followed by one or more characters that does neither include ASCII space or control characters nor curly brackets. <code>{#myId}</code> is syntactic sugar for <code>{id=myId}</code>.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: lower-alpha">
+<li>A class-identifier consists of a FULL STOP (<code>.</code>) immediately followed by one or more characters that does neither include ASCII space or control characters nor curly brackets. <code>{.myClass}</code> is syntactic sugar for <code>{class=myClass}</code>.</li>
+</ol></li>
+</ul>
+<p>Markdown authors shouldn’t write multiple key-value pairs with the same key in an attribute block. However, to ease the burden of implementation, the behaviour in such cases is left undefined—although most implementations will probably parse the attributes sequentially and insert them into a map, which would result in a last-one-wins semantic.</p>
+<p>If there are curly brackets that contain characters which don’t follow the rules outlined above and below, the curly brackets and the containing characters are not considered an attribute block but regular text and are to be interpreted accordingly.</p>
+<h3 id="horizontal-rules-1"><span class="header-section-number">7.1.1</span> Horizontal rules</h3>
+<div id="example-444" class="example" data-section="Horizontal rules">
+<div class="examplenum">
+Example 444
+</div>
+<pre class="markdown"><code>--- {#myId .myClass key=val key2=&quot;val 2&quot;}</code></pre>
+<pre class="html"><code>&lt;hr id=&quot;myId&quot; class=&quot;myClass&quot; key=&quot;val&quot; key2=&quot;val 2&quot; /&gt;</code></pre>
+</div>
+<p>There must be one or more space characters in front of the attribute block:</p>
+<div id="example-445" class="example" data-section="Horizontal rules">
+<div class="examplenum">
+Example 445
+</div>
+<pre class="markdown"><code>---{.myClass}</code></pre>
+<pre class="html"><code>&lt;p&gt;---{.myClass}&lt;/p&gt;</code></pre>
+</div>
+<div id="example-446" class="example" data-section="Horizontal rules">
+<div class="examplenum">
+Example 446
+</div>
+<pre class="markdown"><code>---     {#myId .myClass key=val key2=&quot;val 2&quot;}</code></pre>
+<pre class="html"><code>&lt;hr id=&quot;myId&quot; class=&quot;myClass&quot; key=&quot;val&quot; key2=&quot;val 2&quot; /&gt;</code></pre>
+</div>
+<p>Any whitespace (not only spaces) separate the attributes:</p>
+<div id="example-447" class="example" data-section="Horizontal rules">
+<div class="examplenum">
+Example 447
+</div>
+<pre class="markdown"><code>--- {#myId     .myClass
+key=val}</code></pre>
+<pre class="html"><code>&lt;hr id=&quot;myId&quot; class=&quot;myClass&quot; key=&quot;val&quot; /&gt;</code></pre>
+</div>
+<p>However, no blank lines are allowed within an attribute block:</p>
+<div id="example-448" class="example" data-section="Horizontal rules">
+<div class="examplenum">
+Example 448
+</div>
+<pre class="markdown"><code>--- {#myId
+
+.myClass}</code></pre>
+<pre class="html"><code>&lt;p&gt;--- {#myId&lt;/p&gt;
+&lt;p&gt;.myClass}&lt;/p&gt;</code></pre>
+</div>
+<p>Any characters (except unescaped quotes of the same kind) are allowed in quoted attributes:</p>
+<div id="example-449" class="example" data-section="Horizontal rules">
+<div class="examplenum">
+Example 449
+</div>
+<pre class="markdown"><code>---     {key=&quot;Hello \&quot;World\&quot;!&quot; key2=&#39;Hello &quot;World&quot;!&#39; key3=&quot;even new
+lines and special chars like &#39;=&#39; or &#39;`&#39; are allowed&quot;}</code></pre>
+<pre class="html"><code>&lt;hr key=&quot;Hello &amp;quot;World&amp;quot;!&quot; key2=&quot;Hello &amp;quot;World&amp;quot;!&quot; key3=&quot;even new lines and special chars like &#39;=&#39; or &#39;`&#39; are allowed&quot;/&gt;</code></pre>
+</div>
+<h3 id="atx-headers-1"><span class="header-section-number">7.1.2</span> ATX headers</h3>
+<div id="example-450" class="example" data-section="ATX headers">
+<div class="examplenum">
+Example 450
+</div>
+<pre class="markdown"><code>### foo {#myId .myClass key=val key2=&quot;val 2&quot;}</code></pre>
+<pre class="html"><code>&lt;h3 id=&quot;myId&quot; class=&quot;myClass&quot; key=&quot;val&quot; key2=&quot;val 2&quot;&gt;foo&lt;/h3&gt;</code></pre>
+</div>
+<p>Or with a closing header sequence:</p>
+<div id="example-451" class="example" data-section="ATX headers">
+<div class="examplenum">
+Example 451
+</div>
+<pre class="markdown"><code>### foo ### {#myId}</code></pre>
+<pre class="html"><code>&lt;h3 id=&quot;myId&quot;&gt;foo&lt;/h3&gt;</code></pre>
+</div>
+<h3 id="setext-headers-1"><span class="header-section-number">7.1.3</span> Setext headers</h3>
+<div id="example-452" class="example" data-section="Setext headers">
+<div class="examplenum">
+Example 452
+</div>
+<pre class="markdown"><code>Foo {#myId}
+===========</code></pre>
+<pre class="html"><code>&lt;h1 id=&quot;myId&quot;&gt;Foo&lt;/h1&gt;</code></pre>
+</div>
+<h3 id="fenced-code-blocks-1"><span class="header-section-number">7.1.4</span> Fenced code blocks</h3>
+<div id="example-453" class="example" data-section="Fenced code blocks">
+<div class="examplenum">
+Example 453
+</div>
+<pre class="markdown"><code>``` {.language-ruby #code1}
+x = 1
+```</code></pre>
+<pre class="html"><code>&lt;pre&gt;&lt;code class=&quot;language-ruby&quot;&gt;x = 1
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+</div>
+<p><a href="#info-string">Info strings</a> are syntactic sugar for classes, i.e. the following two fenced code blocks are identical:</p>
+<pre><code>```ruby
+x = 1
+```
+
+``` {.language-ruby}
+x = 1
+```</code></pre>
+<p>As the attribute block must be preceded by a space, this may be surprising:</p>
+<div id="example-454" class="example" data-section="Fenced code blocks">
+<div class="examplenum">
+Example 454
+</div>
+<pre class="markdown"><code>```{.foo}
+x = 1
+```</code></pre>
+<pre class="html"><code>&lt;pre&gt;&lt;code class=&quot;language-{.foo}&quot;&gt;x = 1
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+</div>
+<h3 id="reference-links"><span class="header-section-number">7.1.5</span> Reference Links</h3>
+<p>There must be one or more space characters preceding the attribute block in a reference link as well:</p>
+<div id="example-455" class="example" data-section="Reference Links">
+<div class="examplenum">
+Example 455
+</div>
+<pre class="markdown"><code>[foo][bar]
+
+[bar]: /url &quot;title&quot; {.myClass}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;a href=&quot;/url&quot; title=&quot;title&quot; class=&quot;myClass&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;</code></pre>
+</div>
+<div id="example-456" class="example" data-section="Reference Links">
+<div class="examplenum">
+Example 456
+</div>
+<pre class="markdown"><code>[foo][bar]
+
+[bar]: /url &quot;title&quot;{.no-attribute}</code></pre>
+<pre class="html"><code>&lt;p&gt;[foo][bar]&lt;/p&gt;
+&lt;p&gt;[bar]: /url &quot;title&quot;{.no-attribute}&lt;/p&gt;</code></pre>
+</div>
+<div id="example-457" class="example" data-section="Reference Links">
+<div class="examplenum">
+Example 457
+</div>
+<pre class="markdown"><code>[foo][bar]
+
+[bar]: /url{.no-attribute}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;a href=&quot;/url%7B.no-attribute%7D&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;</code></pre>
+</div>
+<h3 id="paragraphs-1"><span class="header-section-number">7.1.6</span> Paragraphs</h3>
+<p>Attribute blocks must start on a line following the paragraph.</p>
+<div id="example-458" class="example" data-section="Paragraphs">
+<div class="examplenum">
+Example 458
+</div>
+<pre class="markdown"><code>Paragraph with attributes.
+{.myPar}</code></pre>
+<pre class="html"><code>&lt;p class=&quot;myPar&quot;&gt;Paragraph with attributes.&lt;/p&gt;</code></pre>
+</div>
+<div id="example-459" class="example" data-section="Paragraphs">
+<div class="examplenum">
+Example 459
+</div>
+<pre class="markdown"><code>Paragraph with attributes.
+{.myPar
+#myId}</code></pre>
+<pre class="html"><code>&lt;p class=&quot;myPar&quot; id=&quot;myId&quot;&gt;Paragraph with attributes.&lt;/p&gt;</code></pre>
+</div>
+<div id="example-460" class="example" data-section="Paragraphs">
+<div class="examplenum">
+Example 460
+</div>
+<pre class="markdown"><code>Paragraph {.nope}</code></pre>
+<pre class="html"><code>&lt;p&gt;Paragraph {.nope}&lt;/p&gt;</code></pre>
+</div>
+<div id="example-461" class="example" data-section="Paragraphs">
+<div class="examplenum">
+Example 461
+</div>
+<pre class="markdown"><code>Paragraph
+
+{.nope}</code></pre>
+<pre class="html"><code>&lt;p&gt;Paragraph&lt;/p&gt;
+&lt;p&gt;{.nope}&lt;/p&gt;</code></pre>
+</div>
+<p>Attribute blocks for paragraphs must be indented exactly as much as the first line of the paragraph itself:</p>
+<div id="example-462" class="example" data-section="Paragraphs">
+<div class="examplenum">
+Example 462
+</div>
+<pre class="markdown"><code>Paragraph
+ {.nope}</code></pre>
+<pre class="html"><code>&lt;p&gt;Paragraph {.nope}&lt;/p&gt;</code></pre>
+</div>
+<h3 id="block-quotes-1"><span class="header-section-number">7.1.7</span> Block quotes</h3>
+<div id="example-463" class="example" data-section="Block quotes">
+<div class="examplenum">
+Example 463
+</div>
+<pre class="markdown"><code>&gt; Blockquote with attributes.
+{.myBlockquote}</code></pre>
+<pre class="html"><code>&lt;blockquote class=&quot;myBlockquote&quot;&gt;
+&lt;p&gt;Blockquote with attributes.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+</div>
+<div id="example-464" class="example" data-section="Block quotes">
+<div class="examplenum">
+Example 464
+</div>
+<pre class="markdown"><code>&gt; Paragraph with attributes
+&gt; inside a block quote.
+&gt; {.myPar}</code></pre>
+<pre class="html"><code>&lt;blockquote&gt;
+&lt;p class=&quot;myPar&quot;&gt;Paragraph with attributes inside a block quote.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+</div>
+<p>Attribute blocks for block quotes must be indented exactly as much as the <code>&gt;</code> which is part of the <a href="#block-quote-marker">block quote marker</a>:</p>
+<div id="example-465" class="example" data-section="Block quotes">
+<div class="examplenum">
+Example 465
+</div>
+<pre class="markdown"><code>   &gt; Blockquote with attributes.
+   {.myBlockquote}</code></pre>
+<pre class="html"><code>&lt;blockquote class=&quot;myBlockquote&quot;&gt;
+&lt;p&gt;Blockquote with attributes.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+</div>
+<div id="example-466" class="example" data-section="Block quotes">
+<div class="examplenum">
+Example 466
+</div>
+<pre class="markdown"><code>&gt; Blockquote without attributes.
+  {.nope}</code></pre>
+<pre class="html"><code>&lt;blockquote&gt;
+&lt;p&gt;Blockquote without attributes. {.nope}&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+</div>
+<div id="example-467" class="example" data-section="Block quotes">
+<div class="examplenum">
+Example 467
+</div>
+<pre class="markdown"><code>&gt; Blockquote with
+lazy continuation
+{.myBlockquote}</code></pre>
+<pre class="html"><code>&lt;blockquote class=&quot;myBlockquote&quot;&gt;
+&lt;p&gt;Blockquote with lazy continuation.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+</div>
+<div id="example-468" class="example" data-section="Block quotes">
+<div class="examplenum">
+Example 468
+</div>
+<pre class="markdown"><code>&gt; Blockquote with
+lazy continuation
+  {.nope}</code></pre>
+<pre class="html"><code>&lt;blockquote&gt;
+&lt;p&gt;Blockquote with lazy continuation {.nope}&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+</div>
+<h3 id="lists-1"><span class="header-section-number">7.1.8</span> Lists</h3>
+<div id="example-469" class="example" data-section="Lists">
+<div class="examplenum">
+Example 469
+</div>
+<pre class="markdown"><code>- list with
+- attributes
+{.myList}</code></pre>
+<pre class="html"><code>&lt;ul class=&quot;myList&quot;&gt;
+  &lt;li&gt;list with&lt;/li&gt;
+  &lt;li&gt;attributes&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="example-470" class="example" data-section="Lists">
+<div class="examplenum">
+Example 470
+</div>
+<pre class="markdown"><code>- tight list without
+- attributes
+
+{.nope}</code></pre>
+<pre class="html"><code>&lt;ul&gt;
+  &lt;li&gt;tight list without&lt;/li&gt;
+  &lt;li&gt;attributes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;{.nope}&lt;/p&gt;</code></pre>
+</div>
+<p>Attribute blocks for lists must be indented exactly as much as the <a href="#list-marker">list markers</a>:</p>
+<div id="example-471" class="example" data-section="Lists">
+<div class="examplenum">
+Example 471
+</div>
+<pre class="markdown"><code>- a tight list
+- without attributes
+ {.nope}</code></pre>
+<pre class="html"><code>&lt;ul&gt;
+  &lt;li&gt;a tight list&lt;/li&gt;
+  &lt;li&gt;without attributes {.nope}&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="example-472" class="example" data-section="Lists">
+<div class="examplenum">
+Example 472
+</div>
+<pre class="markdown"><code>- a tight list
+- without attributes
+  {.nope}</code></pre>
+<pre class="html"><code>&lt;ul&gt;
+  &lt;li&gt;a tight list&lt;/li&gt;
+  &lt;li&gt;without attributes {.nope}&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="example-473" class="example" data-section="Lists">
+<div class="examplenum">
+Example 473
+</div>
+<pre class="markdown"><code>- one 1
+- two 2
+    - 2.1
+    {.myList}</code></pre>
+<pre class="html"><code>&lt;ul&gt;
+  &lt;li&gt;one 1&lt;/li&gt;
+  &lt;li&gt;two 2
+    &lt;ul class=&quot;myList&quot;&gt;
+      &lt;li&gt;2.1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="example-474" class="example" data-section="Lists">
+<div class="examplenum">
+Example 474
+</div>
+<pre class="markdown"><code>- a loose list
+
+- with attributes
+
+{.myList}</code></pre>
+<pre class="html"><code>&lt;ul class=&quot;myList&quot;&gt;
+  &lt;li&gt;&lt;p&gt;a loose list&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;with attributes&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="example-475" class="example" data-section="Lists">
+<div class="examplenum">
+Example 475
+</div>
+<pre class="markdown"><code>- loose list
+
+- with attributes
+{.myList}</code></pre>
+<pre class="html"><code>&lt;ul class=&quot;myList&quot;&gt;
+  &lt;li&gt;&lt;p&gt;loose list&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;with attributes&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="example-476" class="example" data-section="Lists">
+<div class="examplenum">
+Example 476
+</div>
+<pre class="markdown"><code>- a loose list
+
+- without attributes
+
+
+{.nope}</code></pre>
+<pre class="html"><code>&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;a loose list&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;without attributes&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;{.nope}&lt;/p&gt;</code></pre>
+</div>
+<div id="example-477" class="example" data-section="Lists">
+<div class="examplenum">
+Example 477
+</div>
+<pre class="markdown"><code>- a loose list where
+
+- the last paragraph has attributes.
+  Note that the indentation of the
+  attribute block is significant.
+  {.myPar}</code></pre>
+<pre class="html"><code>&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;a loose list where&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p class=&quot;myPar&quot;&gt;the last paragraph has attributes&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<p>Attribute blocks themselves do not obey the lazy continuation rules. They can be used with lazy continuation paragraphs, however it is not recommended since it gets quickly confusing.</p>
+<div id="example-478" class="example" data-section="Lists">
+<div class="examplenum">
+Example 478
+</div>
+<pre class="markdown"><code>- a loose list
+
+- with lazy
+continuation
+{.myList}</code></pre>
+<pre class="html"><code>&lt;ul class=&quot;myList&quot;&gt;
+  &lt;li&gt;&lt;p&gt;a loose list&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;with lazy continuation&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="example-479" class="example" data-section="Lists">
+<div class="examplenum">
+Example 479
+</div>
+<pre class="markdown"><code>- a tight list
+{.nope}
+- with lazy
+continuation
+  {.nope}</code></pre>
+<pre class="html"><code>&lt;ul&gt;
+  &lt;li&gt;a tight list {.nope}&lt;/li&gt;
+  &lt;li&gt;with lazy continuation {.nope}&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div id="example-480" class="example" data-section="Lists">
+<div class="examplenum">
+Example 480
+</div>
+<pre class="markdown"><code>- a loose list
+
+- with lazy
+continuation
+  {.myPar}</code></pre>
+<pre class="html"><code>&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;a loose list&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p class=&quot;myPar&quot;&gt;with lazy continuation&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<p>A list of blockquotes:</p>
+<div id="example-481" class="example" data-section="Lists">
+<div class="examplenum">
+Example 481
+</div>
+<pre class="markdown"><code>- &gt; a list where each
+  &gt; item is a blockquote
+  &gt; {.myPar}
+
+- &gt; to see what is possible
+  &gt; {.myPar}
+  {.myBlockquote}
+{.myList}</code></pre>
+<pre class="html"><code>&lt;ul class=&quot;myList&quot;&gt;
+  &lt;li&gt;
+    &lt;blockquote&gt;
+    &lt;p class=&quot;myPar&quot;&gt;a list where each item is a blockquote&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;blockquote class=&quot;myBlockquote&quot;&gt;
+    &lt;p class=&quot;myPar&quot;&gt;to see what is possible&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<p>Note that list items themselves cannot have attributes.</p>
+<h3 id="code-span-1"><span class="header-section-number">7.1.9</span> Code span</h3>
+<p>An attribute block follows the closing code span backtick immediately:</p>
+<div id="example-482" class="example" data-section="Code span">
+<div class="examplenum">
+Example 482
+</div>
+<pre class="markdown"><code>`foo`{.myClass}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;code class=&quot;myClass&quot;&gt;foo&lt;/code&gt;&lt;/p&gt;</code></pre>
+</div>
+<div id="example-483" class="example" data-section="Code span">
+<div class="examplenum">
+Example 483
+</div>
+<pre class="markdown"><code>`foo` {.no-attribute}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;code&gt;foo&lt;/code&gt; {.no-attribute}&lt;/p&gt;</code></pre>
+</div>
+<h3 id="emphasis-and-strong-emphasis-1"><span class="header-section-number">7.1.10</span> Emphasis and strong emphasis</h3>
+<p>An attribute block follows any closing emphasis character immediately:</p>
+<div id="example-484" class="example" data-section="Emphasis and strong emphasis">
+<div class="examplenum">
+Example 484
+</div>
+<pre class="markdown"><code>_foo_{.myClass}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;em class=&quot;myClass&quot;&gt;foo&lt;/em&gt;&lt;/p&gt;</code></pre>
+</div>
+<div id="example-485" class="example" data-section="Emphasis and strong emphasis">
+<div class="examplenum">
+Example 485
+</div>
+<pre class="markdown"><code>**foo**{.myClass}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;strong class=&quot;myClass&quot;&gt;foo&lt;/strong&gt;&lt;/p&gt;</code></pre>
+</div>
+<h3 id="inline-links"><span class="header-section-number">7.1.11</span> Inline Links</h3>
+<p>An attribute block follows a link’s right parenthesis (<code>)</code>) immediately:</p>
+<div id="example-486" class="example" data-section="Inline Links">
+<div class="examplenum">
+Example 486
+</div>
+<pre class="markdown"><code>[link](/uri){.myClass}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;a href=&quot;/uri&quot; class=&quot;myClass&quot;&gt;link&lt;/a&gt;&lt;/p&gt;</code></pre>
+</div>
+<h3 id="images-1"><span class="header-section-number">7.1.12</span> Images</h3>
+<p>As images are defined as links preceded by an exclamation mark (<code>!</code>), the behaviour is already well-defined.</p>
+<div id="example-487" class="example" data-section="Images">
+<div class="examplenum">
+Example 487
+</div>
+<pre class="markdown"><code>![foo](/url){.myClass}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;img src=&quot;/url&quot; alt=&quot;foo&quot; class=&quot;myClass&quot; /&gt;&lt;/p&gt;</code></pre>
+</div>
+<h3 id="spans"><span class="header-section-number">7.1.13</span> Spans</h3>
+<p>A span consists of</p>
+<ul>
+<li>an opening <code>[</code>, followed by</li>
+<li>zero or more characters parsed as inline (where neither the first nor the last character is an ASCII space or control character), followed by</li>
+<li>a closing <code>]</code>, immediately followed by</li>
+<li>a mandatory attribute block.</li>
+</ul>
+<div id="example-488" class="example" data-section="Spans">
+<div class="examplenum">
+Example 488
+</div>
+<pre class="markdown"><code>[foo _bar_]{#myId}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;span id=&quot;myId&quot;&gt;foo &lt;em&gt;bar&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;</code></pre>
+</div>
+<p>Spaces before or after the span are not required:</p>
+<div id="example-489" class="example" data-section="Spans">
+<div class="examplenum">
+Example 489
+</div>
+<pre class="markdown"><code>this[foo]{#myId}works</code></pre>
+<pre class="html"><code>&lt;p&gt;this&lt;span id=&quot;myId&quot;&gt;foo&lt;/span&gt;works&lt;/p&gt;</code></pre>
+</div>
+<p>But the span content mustn’t start or end with whitespace:</p>
+<div id="example-490" class="example" data-section="Spans">
+<div class="examplenum">
+Example 490
+</div>
+<pre class="markdown"><code>[ does not]{} work</code></pre>
+<pre class="html"><code>&lt;p&gt;[ does not]{} work&lt;/p&gt;</code></pre>
+</div>
+<div id="example-491" class="example" data-section="Spans">
+<div class="examplenum">
+Example 491
+</div>
+<pre class="markdown"><code>[does not ]{} work</code></pre>
+<pre class="html"><code>&lt;p&gt;[does not ]{} work&lt;/p&gt;</code></pre>
+</div>
+<p>Empty attribute blocks are generally allowed:</p>
+<div id="example-492" class="example" data-section="Spans">
+<div class="examplenum">
+Example 492
+</div>
+<pre class="markdown"><code>[foo]{}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;span&gt;foo&lt;/span&gt;&lt;/p&gt;</code></pre>
+</div>
+<p>As are empty spans:</p>
+<div id="example-493" class="example" data-section="Spans">
+<div class="examplenum">
+Example 493
+</div>
+<pre class="markdown"><code>[]{.glyphicon}</code></pre>
+<pre class="html"><code>&lt;p&gt;&lt;span class=&quot;glyphicon&quot;&gt;&lt;/span&gt;&lt;/p&gt;</code></pre>
+</div>
+<p>Note that <a href="#reference-links">reference links</a> have their attributes in the reference part, thus this span is not to be confused with a reference link:</p>
+<div id="example-494" class="example" data-section="Spans">
+<div class="examplenum">
+Example 494
+</div>
+<pre class="markdown"><code>a paragraph with [no reflink]{.myClass}
+
+[no reflink]: http://test.com</code></pre>
+<pre class="html"><code>&lt;p&gt;a paragraph with &lt;span class=&quot;myClass&quot;&gt;no reflink&lt;/span&gt;&lt;/p&gt;</code></pre>
+</div>
 <!-- END TESTS -->
+
 <h1 id="appendix-a-a-parsing-strategy" class="unnumbered">Appendix A: A parsing strategy</h1>
 <h2 id="overview" class="unnumbered">Overview</h2>
 <p>Parsing has two phases:</p>
